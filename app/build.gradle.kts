@@ -1,6 +1,7 @@
 plugins {
     alias(libs.plugins.android.application)
     alias(libs.plugins.jetbrains.kotlin.android)
+    id("kotlin-kapt")
 }
 
 android {
@@ -35,9 +36,15 @@ android {
     kotlinOptions {
         jvmTarget = "1.8"
     }
+
+    buildFeatures {
+        viewBinding = true
+    }
 }
 
 dependencies {
+    implementation("com.otaliastudios:zoomlayout:1.9.0")
+
     implementation(libs.retrofit)
     implementation(libs.converter.gson)
     implementation(libs.logging.interceptor)
@@ -46,10 +53,10 @@ dependencies {
 
     implementation(libs.androidx.room.runtime)
     implementation(libs.androidx.room.ktx)
-    annotationProcessor(libs.androidx.room.compiler)
+    kapt(libs.androidx.room.compiler)
 
     implementation(libs.glide)
-    annotationProcessor(libs.compiler)
+    kapt(libs.compiler)
 
     implementation(libs.kotlinx.coroutines.android)
     implementation(libs.kotlinx.coroutines.core)

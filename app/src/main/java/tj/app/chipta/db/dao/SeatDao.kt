@@ -1,8 +1,8 @@
-package tj.app.chipta.db
+package tj.app.chipta.db.dao
 
 import androidx.room.*
 
-import tj.app.chipta.model.SeatEntity
+import tj.app.chipta.model.entity.SeatEntity
 
 @Dao
 interface SeatDao {

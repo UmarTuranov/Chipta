@@ -1,3 +1,8 @@
 <resources>
     <string name="app_name">Chipta</string>
+    <string name="alert_title_error">Ошибка</string>
+    <string name="alert_message_generic">Произошла ошибка. Пожалуйста, попробуйте позже.</string>
+    <string name="alert_button_ok">ОК</string>
+    <string name="alert_network_unavailable_title">Нет интернета!</string>
+    <string name="alert_network_unavailable_message">Соединение с интернетом отсутсвует, пожалуйста включите интернет и попробуйте снова</string>
 </resources>

@@ -5,6 +5,6 @@ import retrofit2.http.GET
 import tj.app.chipta.model.CinemaSessionModel
 
 interface CinemaService {
-    @GET("test11/seat.json")
+    @GET("/test11/seat.json")
     suspend fun getCinemaSession(): Response<CinemaSessionModel>
 }
