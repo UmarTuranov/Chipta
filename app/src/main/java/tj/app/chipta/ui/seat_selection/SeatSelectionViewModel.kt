@@ -56,7 +56,8 @@ class SeatSelectionViewModel(application: Application) : AndroidViewModel(applic
                                         seatType = it.seat_type,
                                         objectType = it.object_type,
                                         objectDescription = it.object_description,
-                                        objectTitle = it.object_title
+                                        objectTitle = it.object_title,
+                                        isSelectedSeat = false
                                     )
                                 },
                                 seatsType = cachedTicketTypes.map {

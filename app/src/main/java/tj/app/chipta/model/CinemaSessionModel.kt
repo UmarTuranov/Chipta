@@ -75,7 +75,8 @@ data class SeatModel(
     val objectDescription: String?,
 
     @SerializedName("object_title")
-    val objectTitle: String?
+    val objectTitle: String?,
+    var isSelectedSeat: Boolean
 )
 
 data class TicketTypeModel(

@@ -5,4 +5,12 @@
     <string name="alert_button_ok">ОК</string>
     <string name="alert_network_unavailable_title">Нет интернета!</string>
     <string name="alert_network_unavailable_message">Соединение с интернетом отсутсвует, пожалуйста включите интернет и попробуйте снова</string>
+    <string name="cinema_name">Кинотеатр "Навруз"</string>
+    <string name="pay">Оплатить</string>
+    <string name="screen">Экран</string>
+    <string name="pay_ticket">Оплатить билет</string>
+    <string name="choose_payment_method">Выберите метод оплаты</string>
+    <string name="wallet">Кошелёк</string>
+    <string name="cashback">Кэшбек</string>
+    <string name="to_main">На главную</string>
 </resources>

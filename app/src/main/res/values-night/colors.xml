@@ -4,4 +4,10 @@
     <color name="black">#FF000000</color>
     <color name="blackToWhite">#FFFFFFFF</color>
     <color name="whiteToBlack">#FF000000</color>
+    <color name="lightToDark">#191919</color>
+    <color name="greyActivityBackground">#FF000000</color>
+    <color name="green">#00be02</color>
+    <color name="orange">#FFC107</color>
+    <color name="blue">#7171b7</color>
+    <color name="red">#FF5722</color>
 </resources>
