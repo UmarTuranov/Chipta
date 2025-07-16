@@ -1,3 +1,4 @@
+import android.annotation.SuppressLint
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -16,6 +17,7 @@ class ConfirmedPaymentBottomSheet : BottomSheetDialogFragment() {
         return binding.root
     }
 
+    @SuppressLint("SetTextI18n")
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
@@ -30,7 +32,7 @@ class ConfirmedPaymentBottomSheet : BottomSheetDialogFragment() {
         binding.paymentSumText.text = "$amount TJS"
         binding.serviceNameTitle.text = serviceName
         binding.dateTimeTitle.text = dateTime
-        binding.ticketCountText.text = "$ticketCount"
+        binding.ticketCountText.text = "$ticketCount шт"
         binding.commissionTitle.text = commission
         binding.paymentTitle.text = paymentMethod
 
