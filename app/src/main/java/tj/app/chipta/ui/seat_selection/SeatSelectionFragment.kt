@@ -53,6 +53,7 @@ class SeatSelectionFragment : Fragment() {
         observeViewModel()
         viewModel.loadSession()
         binding.zoomLayout.setHasClickableChildren(true)
+        selectedSeats.clear()
     }
 
     private fun observeViewModel(){
