@@ -1,5 +1,6 @@
 package tj.app.chipta.ui.seat_selection
 
+import android.annotation.SuppressLint
 import android.content.res.ColorStateList
 import android.graphics.Color
 import android.os.Bundle
@@ -51,6 +52,7 @@ class SeatSelectionFragment : Fragment() {
 
         observeViewModel()
         viewModel.loadSession()
+        binding.zoomLayout.setHasClickableChildren(true)
     }
 
     private fun observeViewModel(){
@@ -68,6 +70,7 @@ class SeatSelectionFragment : Fragment() {
         })
     }
 
+    @SuppressLint("SetTextI18n")
     private fun setupViews(session: CinemaSessionModel) = with(binding){
         hallNameText.text = session.hallName ?: ""
 
@@ -93,42 +96,47 @@ class SeatSelectionFragment : Fragment() {
         seatMapContainer.post {
             seatMapContainer.removeAllViews()
 
-            val containerWidth = seatMapContainer.width.toFloat()
-            val containerHeight = seatMapContainer.height.toFloat()
+            val mapWidth = session.mapWidth ?: 1
+            val mapHeight = session.mapHeight ?: 1
 
-            val scaleX = containerWidth / (session.mapWidth ?: 1)
-            val scaleY = containerHeight / (session.mapHeight ?: 1)
+            val scaleFactor = 2f
+            val pixelWidth = (mapWidth * scaleFactor).toInt()
+            val pixelHeight = (mapHeight * scaleFactor).toInt()
+
+            seatMapContainer.layoutParams = FrameLayout.LayoutParams(pixelWidth, pixelHeight)
 
             session.seats?.forEach { seat ->
-                val left = seat.left ?: 0
-                val top = seat.top ?: 0
+                val left = (seat.left ?: 0) * scaleFactor
+                val top = (seat.top ?: 0) * scaleFactor
 
                 when (seat.objectType) {
                     "seat" -> {
+                        val seatSize = 50
+
                         if (seat.bookedSeats == 1) {
                             val bookedView = ImageView(requireContext()).apply {
-                                layoutParams = FrameLayout.LayoutParams(50, 50)
-                                x = left * scaleX
-                                y = top * scaleY
+                                layoutParams = FrameLayout.LayoutParams(seatSize, seatSize)
+                                x = left
+                                y = top
                                 setImageResource(R.drawable.ic_cancel)
                                 imageTintList = ColorStateList.valueOf(Color.GRAY)
                             }
                             seatMapContainer.addView(bookedView)
                         } else {
                             val seatFrame = FrameLayout(requireContext()).apply {
-                                layoutParams = FrameLayout.LayoutParams(50, 50)
-                                x = left * scaleX
-                                y = top * scaleY
+                                layoutParams = FrameLayout.LayoutParams(seatSize, seatSize)
+                                x = left
+                                y = top
                             }
 
                             val seatIcon = ImageView(requireContext()).apply {
-                                layoutParams = FrameLayout.LayoutParams(50, 50)
+                                layoutParams = FrameLayout.LayoutParams(seatSize, seatSize)
                                 setImageResource(R.drawable.ic_seat)
                                 imageTintList = ColorStateList.valueOf(getSeatColor(seat.seatType))
                             }
 
                             val seatLabel = TextView(requireContext()).apply {
-                                layoutParams = FrameLayout.LayoutParams(50, 50)
+                                layoutParams = FrameLayout.LayoutParams(seatSize, seatSize)
                                 text = seat.place ?: ""
                                 textSize = 12F
                                 gravity = Gravity.CENTER
@@ -165,8 +173,8 @@ class SeatSelectionFragment : Fragment() {
                                 FrameLayout.LayoutParams.WRAP_CONTENT,
                                 FrameLayout.LayoutParams.WRAP_CONTENT
                             )
-                            x = left * scaleX
-                            y = top * scaleY
+                            x = left
+                            y = top
                             text = seat.objectTitle ?: ""
                             textSize = 15F
                             setTextColor(Color.GRAY)

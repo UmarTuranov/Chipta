@@ -101,12 +101,27 @@
             android:text="@string/screen"
             android:textSize="10sp"/>
 
-        <FrameLayout
-            android:id="@+id/seatMapContainer"
+        <com.otaliastudios.zoom.ZoomLayout
+            android:id="@+id/zoomLayout"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_marginTop="32dp"
-            android:layout_marginBottom="110dp"/>
+            android:layout_marginBottom="110dp"
+            app:alignment="center"
+            app:transformation="centerInside"
+            app:overScrollHorizontal="true"
+            app:overScrollVertical="true">
+
+            <FrameLayout
+                android:id="@+id/seatMapContainer"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+        </com.otaliastudios.zoom.ZoomLayout>
+
+<!--        <FrameLayout-->
+<!--            android:id="@+id/seatMapContainer"-->
+<!--            android:layout_width="match_parent"-->
+<!--            android:layout_height="match_parent"/>-->
 
     </LinearLayout>
 
